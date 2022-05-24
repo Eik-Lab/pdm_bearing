@@ -33,7 +33,7 @@ def read_all_from_trial(trial_number, split_count):
     for health in health_condition:
         for speed in speed_condition:
             data_name = f'{health}-{speed}-{trial_number}.mat'
-            data_list[health] += split_data(read_mat_file('data/' + data_name), split_count)
+            data_list[health] += split_data(read_mat_file('data_raw/' + data_name), split_count)
 
     return data_list
 
