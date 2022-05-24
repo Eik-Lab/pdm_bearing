@@ -7,8 +7,8 @@ from transform_data import frequency, amplitude
 
 st.title('Bearing analysis')
 
-datasets = os.listdir('../csv')
 # --- Sidebar ---
+datasets = os.listdir('../data_csv')
 with st.sidebar:
     st.write("""
     Health of bearing:
@@ -26,18 +26,24 @@ with st.sidebar:
 
     options = st.multiselect('Choose datasets to analyse', datasets, datasets[0])
 
+
+
 # --- Fetch data ---
 vibration_data = pd.DataFrame()
 speed_data = pd.DataFrame()
 
 for data_name in options:
-    data = pd.read_csv(f'../csv/{data_name}')
+    data = pd.read_csv(f'../data_csv/{data_name}')
     vibration_data[data_name] = data['Vibration']
     speed_data[data_name] = data['Speed']
+
+
 
 # --- Slider ---
 n_datapoints = st.slider('Datapoints to show', 10000, 2*10**6, step=10000)
 step = int(n_datapoints/10**4)
+
+
 
 # --- Vibration plot ---
 st.subheader('Vibration')
@@ -53,6 +59,8 @@ elif vib_trans == 'Frequency / Speed':
 
 st.line_chart(vib_plot_data.iloc[:n_datapoints:step])
 
+
+
 # --- Speed plot ---
 st.subheader('Speed')
 spe_trans = st.selectbox('Transform data', ('Raw', 'Frequency'), key='spe_trans')
@@ -62,6 +70,8 @@ if spe_trans == 'Frequency':
     spe_plot_data = frequency(spe_plot_data, 1000)
 
 st.line_chart(spe_plot_data.iloc[:n_datapoints:step])
+
+
 
 # --- Scatter plot ---
 st.subheader('Frequency vs amplitude')
