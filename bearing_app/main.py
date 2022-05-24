@@ -8,7 +8,7 @@ from transform_data import frequency, amplitude
 st.title('Bearing analysis')
 
 # --- Sidebar ---
-datasets = os.listdir('data_csv')
+datasets = os.listdir('./data_csv')
 with st.sidebar:
     st.write("""
     Health of bearing:
@@ -33,7 +33,7 @@ vibration_data = pd.DataFrame()
 speed_data = pd.DataFrame()
 
 for data_name in options:
-    data = pd.read_csv(f'data_csv/{data_name}')
+    data = pd.read_csv(f'./data_csv/{data_name}')
     vibration_data[data_name] = data['Vibration']
     speed_data[data_name] = data['Speed']
 
