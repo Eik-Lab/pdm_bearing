@@ -38,10 +38,6 @@ def read_all_from_trial(trial_number, split_count):
     return data_list
 
 def split_data(data, number_of_chunks=2):
-    chunks = []
     chunck_size = len(data) / number_of_chunks
-    
-    for i in range(number_of_chunks):
-        chunks.append(data[int(i*chunck_size):int((i+1)*chunck_size)])
 
-    return chunks
+    return [data[int(i * chunck_size) : int((i + 1) * chunck_size)] for i in range(number_of_chunks)]

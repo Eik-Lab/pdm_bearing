@@ -10,9 +10,7 @@ def frequency(data, window_size=10):
     shifted_data = bool_data.shift(-1)
 
     state_change_data = bool_data != shifted_data
-    frequency = state_change_data.rolling(window=window_size).sum()
-    
-    return frequency
+    return state_change_data.rolling(window=window_size).sum()
 
 
 def amplitude(data, n=10):
