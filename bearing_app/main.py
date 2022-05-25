@@ -8,7 +8,8 @@ from transform_data import frequency, amplitude
 st.title('Bearing analysis')
 
 # --- Sidebar ---
-datasets = os.listdir('./data_csv')
+# datasets = os.listdir('./data_csv')
+datasets = ["H-A-1.csv", "H-B-1.csv", "I-A-1.csv", "I-B-1.csv", "O-A-1.csv", "O-B-1.csv"]
 with st.sidebar:
     st.write("""
     Health of bearing:
