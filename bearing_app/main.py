@@ -31,9 +31,9 @@ with st.sidebar:
 # --- Fetch data ---
 vibration_data = pd.DataFrame()
 speed_data = pd.DataFrame()
-
+url = "https://raw.githubusercontent.com/Eik-Lab/pdm_bearing/main/bearing_app/data_csv/"
 for data_name in options:
-    data = pd.read_csv(f'./data_csv/{data_name}')
+    data = pd.read_csv(f'{url}{data_name}')
     vibration_data[data_name] = data['Vibration']
     speed_data[data_name] = data['Speed']
 
